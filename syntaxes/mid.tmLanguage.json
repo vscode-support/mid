@@ -1,0 +1,40 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Mid",
+  "patterns": [
+    {
+      "name": "comment.line.mid",
+      "match": "//.*$"
+    },
+    {
+      "name": "string.quoted.double.mid",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.mid",
+          "match": "\\\\(.)"
+        }
+      ]
+    },
+    {
+      "name": "keyword.other.mid",
+      "match": "\\b(protocol|enum|struct|singleton|array|int|int64|string)\\b"
+    },
+    {
+      "name": "constant.numeric.mid",
+      "match": "\\b\\d+\\b"
+    },
+    {
+      "name": "entity.name.tag.mid",
+     "patterns": [
+        {
+          "name": "string.unquoted.tag.mid",
+		  "match": "\\b\\w+\\s*:`[^`]*`"
+        }
+      ]
+    }
+  ],
+  "scopeName": "source.mid"
+}
+

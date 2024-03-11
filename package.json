@@ -1,0 +1,29 @@
+{
+  "name": "mid",
+  "displayName": "mid",
+  "description": "midlang support extension",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.87.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vscode/mid.git"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "mid",
+      "aliases": ["mid", "mid"],
+      "extensions": ["mid"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "mid",
+      "scopeName": "source.mid",
+      "path": "./syntaxes/mid.tmLanguage.json"
+    }]
+  }
+}

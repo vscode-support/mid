@@ -6,6 +6,17 @@
       "name": "comment.line.mid",
       "match": "//.*$"
     },
+	{
+      "name": "comment.block.mid",
+      "begin": "/\\*",
+      "end": "\\*/",
+      "patterns": [
+        {
+          "name": "comment.block.mid",
+          "match": "."
+        }
+      ]
+    },
     {
       "name": "string.quoted.double.mid",
       "begin": "\"",
@@ -17,9 +28,90 @@
         }
       ]
     },
+	{
+      "match": "\\benum\\s+([A-Za-z_][A-Za-z0-9_]*)",
+      "name": "keyword.enum.mid",
+      "captures": {
+        "0": {
+          "name": "keyword.control.enum.mid"
+        },
+        "1": {
+          "name": "entity.name.type.enum.mid"
+        }
+      }
+    },
+	{
+      "match": "\\b(struct|protocol)\\s+([A-Za-z_][A-Za-z0-9_]*)",
+      "name": "keyword.other.mid",
+      "captures": {
+        "1": {
+          "name": "keyword.other.mid"
+        },
+        "2": {
+          "name": "entity.name.type.mid"
+        }
+      }
+    },
+	{
+      "match": "\\b(package)\\s+([A-Za-z_][A-Za-z0-9_.]*)",
+      "name": "keyword.package.mid",
+      "captures": {
+        "1": {
+          "name": "keyword.control.package.mid"
+        },
+        "2": {
+          "name": "entity.name.namespace.mid"
+        }
+      }
+    },
+	{
+		"begin": "\\barray<",
+		"end": ">",
+		"name": "storage.type.array.mid",
+		"patterns": [
+			{
+				"match": "\\b([A-Za-z_][A-Za-z0-9_]*)",
+				"name": "entity.name.type.custom.mid"
+			},
+			{
+				"match": ",\\s*(\\d+)",
+				"name": "constant.numeric.size.mid"
+			}
+		]
+	},
+	{
+		"begin": "\\bvector<",
+		"end": ">",
+		"name": "storage.type.vector.mid",
+		"patterns": [
+			{
+				"match": "\\b([A-Za-z_][A-Za-z0-9_]*)",
+				"name": "entity.name.type.custom.mid"
+			}
+		]
+	},
+	{
+		"begin": "\\bmap<",
+		"end": ">",
+		"name": "storage.type.map.mid",
+		"patterns": [
+			{
+				"match": "\\b([A-Za-z_][A-Za-z0-9_]*)",
+				"name": "entity.name.type.custom.mid"
+			},
+			{
+				"match": ",",
+				"name": "punctuation.separator.map.mid"
+			},
+			{
+				"match": "\\b([A-Za-z_][A-Za-z0-9_]*)",
+				"name": "entity.name.type.custom.mid"
+			}
+		]
+	},
     {
       "name": "keyword.other.mid",
-      "match": "\\b(protocol|enum|struct|singleton|array|int|int64|string)\\b"
+      "match": "\\b(package|protocol|enum|struct|singleton|vector|array|map|int|int8|int16|int32|int64|uint|uint8|uint16|uint32|uint64|byte|bool|float32|float64|string)\\b"
     },
     {
       "name": "constant.numeric.mid",
